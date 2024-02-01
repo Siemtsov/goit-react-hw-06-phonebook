@@ -1,24 +1,43 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import { Form, Label, Input, Button } from './ContactForm.styled';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from '../Redux/selectors';
+import { addContact } from '../Redux/contactSlice';
+
+const nameInputId = nanoid();
+const numberInputId = nanoid();
 
 const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const nameInputId = nanoid();
-  const numberInputId = nanoid();
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const hndlrSubmit = event => {
     event.preventDefault();
 
-    onSubmit({ name, number });
+    const isInContacts = contacts.some(
+      contact =>
+        contacts.name.toLowerCase().trim() === name.toLowerCase().trim()
+    );
+
+    if (isInContacts) {
+      alert(`${name}, is already in contacts`);
+      return;
+    }
+
+    dispatch(addContact({ name, number }));
+
     setName('');
     setNumber('');
   };
 
   const hndlrChange = event => {
     const { name, value } = event.target;
+
     switch (name) {
       case 'name':
         setName(value);
@@ -46,7 +65,7 @@ const ContactForm = ({ onSubmit }) => {
         />
       </Label>
       <Label htmlFor={numberInputId}>
-        Number{' '}
+        Number
         <Input
           type="tel"
           name="number"

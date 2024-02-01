@@ -4,10 +4,11 @@ import storage from 'redux-persist/lib/storage';
 
 const phoneContacts = {
   items: [
-    { id: 'id-1', name: 'Steve Jobs', number: '459-12-56' },
-    { id: 'id-2', name: 'Bill Gates', number: '443-89-12' },
-    { id: 'id-3', name: 'Elon Musk', number: '645-17-79' },
-    { id: 'id-4', name: 'Mark Zuckerberg', number: '227-91-26' },
+    { id: 'id-1', name: 'Ivan Siemtsov', number: '459-12-56' },
+    { id: 'id-2', name: 'Brother 1', number: '443-89-12' },
+    { id: 'id-3', name: 'Brother 2', number: '645-17-79' },
+    { id: 'id-4', name: 'mom', number: '227-91-26' },
+    { id: 'id-5', name: 'dad', number: '227-91-26' },
   ],
 };
 
