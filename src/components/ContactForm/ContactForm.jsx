@@ -21,7 +21,7 @@ const ContactForm = ({ onSubmit }) => {
 
     const isInContacts = contacts.some(
       contact =>
-        contacts.name.toLowerCase().trim() === name.toLowerCase().trim()
+        contact.name.toLowerCase().trim() === name.toLowerCase().trim()
     );
 
     if (isInContacts) {
