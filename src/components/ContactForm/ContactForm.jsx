@@ -9,7 +9,7 @@ import { addContact } from '../Redux/contactSlice';
 const nameInputId = nanoid();
 const numberInputId = nanoid();
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
